@@ -20,7 +20,8 @@
     "gf": "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d",
     "gfl": "git branch | grep -v '^*' | xargs git branch -D",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_bb6ba4baba9e8cb"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
