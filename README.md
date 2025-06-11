@@ -154,3 +154,4 @@ Vercel로 자동 배포되며, main 브랜치 푸시 시 배포가 트리거됩�
 해당 프로젝트는 MIT 라이선스를 따릅니다.
 # next-template
 # next-template
+# next-template
