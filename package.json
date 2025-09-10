@@ -21,7 +21,7 @@
     "gfl": "git branch | grep -v '^*' | xargs git branch -D",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic"
+    "chromatic": "npx chromatic --project-token=chpt_95495e2a23326a1"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
