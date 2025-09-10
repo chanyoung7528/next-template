@@ -18,15 +18,15 @@ jobs:
           node-version: 18
           cache: 'yarn'
 
-      # Corepack 활성화 (Yarn Berry / pnpm 플러그인 관리)
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Enable Corepack + Prepare Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@pnpm@10.11.1 --activate
+          yarn --version
 
-      # 의존성 설치 (immutable = lockfile 불일치 시 실패)
       - name: Install dependencies
         run: yarn install --immutable
 
-      # Chromatic 배포
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
