@@ -1,13 +1,10 @@
 # Workflow name
 name: 'Chromatic Deployment'
 
-# Event for the workflow
 on: push
 
-# List of jobs
 jobs:
   chromatic-deploy:
-    # Operating System
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'yarn' # yarn.lock 기준 캐싱 (npm 사용 시 npm으로 변경)
+          cache: 'yarn'
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1
