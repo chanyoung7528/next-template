@@ -12,15 +12,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
 
-      - name: Enable Corepack + Setup pnpm
+      - name: Setup pnpm
         run: |
-          corepack enable
           corepack prepare pnpm@10.11.1 --activate
           pnpm --version
 
