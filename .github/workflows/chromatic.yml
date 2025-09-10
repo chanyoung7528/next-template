@@ -15,17 +15,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'yarn'
+          node-version: 22
+          cache: 'pnpm'
 
-      - name: Enable Corepack + Prepare Yarn
+      - name: Enable Corepack + Setup pnpm
         run: |
           corepack enable
-          corepack prepare yarn@pnpm@10.11.1 --activate
-          yarn --version
+          corepack prepare pnpm@10.11.1 --activate
+          pnpm --version
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1
