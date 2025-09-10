@@ -6,28 +6,27 @@ on: push
 
 # List of jobs
 jobs:
-  test:
+  chromatic-deploy:
     # Operating System
     runs-on: ubuntu-latest
-    # Job steps
+
     steps:
-      - uses: actions/checkout@v2 # Update to the latest version of checkout action
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2 # Example of using a different action
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - name: Cache Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: yarn
-      - name: Run Chromatic
-        uses: chromaui/action@v1 # Update to the latest version of Chromatic action
+          node-version: 18
+          cache: 'yarn' # yarn.lock 기준 캐싱 (npm 사용 시 npm으로 변경)
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
