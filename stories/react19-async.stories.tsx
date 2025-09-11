@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import React19AsyncComponent from '@/components/common/react19-async';
 
 const meta = {
-  title: 'Components/React 19/Async Data',
+  title: 'React 19/Async Data',
   component: React19AsyncComponent,
   parameters: {
     layout: 'centered',

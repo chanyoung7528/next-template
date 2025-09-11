@@ -52,7 +52,7 @@ const mockActions = {
 };
 
 const meta = {
-  title: 'Components/React 19/Form',
+  title: 'React 19/Form',
   component: React19Form,
   parameters: {
     layout: 'centered',

@@ -132,7 +132,7 @@ const mockActions = {
 };
 
 const meta = {
-  title: 'Components/React 19/Advanced User Form',
+  title: 'React 19/Advanced User Form',
   component: AdvancedUserForm,
   parameters: {
     layout: 'centered',
