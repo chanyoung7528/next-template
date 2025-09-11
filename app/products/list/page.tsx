@@ -3,10 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useProductList } from '@/services/product/list';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { OnChangeFn, SortingState } from '@tanstack/react-table';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { DataTable } from '@/components/common/data-table/data-table';
 import SkeletonTable from '@/components/common/data-table/skeleton-table';
@@ -31,13 +29,6 @@ type FormValues = {
   searchKeyword: string;
 };
 
-type Post = {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-};
-
 const LIMIT = 10;
 const TOTAL_COUNT = 200;
 
@@ -56,8 +47,6 @@ export default function ProductList() {
     sorting,
   });
 
-  if (isError) return <div>데이터 로딩 오류</div>;
-  const showSkeleton = isLoading || (!data && isFetching);
   const form = useForm<FormValues>({
     defaultValues: {
       category1: 'all',
@@ -71,6 +60,9 @@ export default function ProductList() {
       searchKeyword: '',
     },
   });
+
+  if (isError) return <div>데이터 로딩 오류</div>;
+  const showSkeleton = isLoading || (!data && isFetching);
 
   function onSubmit(data: FormValues) {
     console.log('Form submitted:', data);
